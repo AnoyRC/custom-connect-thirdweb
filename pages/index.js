@@ -1,5 +1,6 @@
 import Dialog from "@/components/dialog";
 import {
+  ConnectWallet,
   useAddress,
   useConnectionStatus,
   useDisconnect,
@@ -46,9 +47,18 @@ export default function Home() {
         <h1
           className={`text-base ${roboto.className} text-white mb-5 text-center`}
         >
-          Currently supports Metamask and WalletConnect, Can you add more?
-          <br />
           Custom Connect Wallet Button
+          <br />
+          Supports Metamask and WalletConnect
+          <br /> Can you add more?
+        </h1>
+        <div className=" mb-5 ">
+          <ConnectWallet />
+        </div>
+        <h1
+          className={`text-base ${roboto.className} text-white mb-5 text-center`}
+        >
+          {"thirdweb Connect Wallet Button (Non Clickable)"}
         </h1>
       </div>
       {handleDialog && <Dialog dialogHandler={setHandleDialog} />}
