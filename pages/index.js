@@ -30,6 +30,7 @@ export default function Home() {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center">
+      {/* Custom Connect Wallet Button */}
       <div
         className="transition ease-linear duration-300 rounded-3xl text-[#191919] p-4 px-5 border-[#06f2a8] bg-[#06f2a8] hover:cursor-pointer border-[1px] hover:shadow-[#06f2a8] hover:shadow-2xl"
         onClick={handleConnect}
@@ -38,6 +39,8 @@ export default function Home() {
           {connectionStatus === "connected" ? "Disconnect" : "Connect Wallet"}
         </h1>
       </div>
+
+      {/* Connection Status */}
       <div className="fixed h-screen w-screen flex flex-col justify-end items-center -z-10">
         <h1 className={`text-lg ${roboto.className} text-white mb-5`}>
           {connectionStatus === "connected"
@@ -52,6 +55,8 @@ export default function Home() {
           Supports Metamask and WalletConnect
           <br /> Can you add more?
         </h1>
+
+        {/* thirdweb Connect Wallet Button (Non Clickable) */}
         <div className=" mb-5 ">
           <ConnectWallet />
         </div>
@@ -61,6 +66,8 @@ export default function Home() {
           {"thirdweb Connect Wallet Button (Non Clickable)"}
         </h1>
       </div>
+
+      {/* Wallet Selector Dialog Box */}
       {handleDialog && <Dialog dialogHandler={setHandleDialog} />}
     </div>
   );

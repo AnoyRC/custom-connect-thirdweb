@@ -5,7 +5,8 @@ import {
   useWalletConnect,
   useConnectionStatus,
 } from "@thirdweb-dev/react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import loading from "../public/Loading.gif";
 
 const roboto = Roboto({
   weight: ["400", "700"],
@@ -17,6 +18,8 @@ export default function Dialog(props) {
   const metamask = useMetamask();
   const walletConnect = useWalletConnect();
   const connectionStatus = useConnectionStatus();
+
+  // Wallet Menu, add more if you want, The UI will adjust automatically
   const menu = [
     {
       name: "Metamask",
@@ -30,6 +33,7 @@ export default function Dialog(props) {
     },
   ];
 
+  // Close Dialog when connected
   useEffect(() => {
     if (connectionStatus === "connected") {
       props.dialogHandler(false);
@@ -47,6 +51,8 @@ export default function Dialog(props) {
               ? "Loading..."
               : "Connect Wallet"}
           </h1>
+
+          {/* Close Button */}
           <div
             className="h-10 w-10 bg-[#404040] rounded-2xl flex items-center justify-center hover:bg-[#3b3b3b] transition-colors duration-300 hover:cursor-pointer"
             onClick={() => props.dialogHandler(false)}
@@ -54,9 +60,11 @@ export default function Dialog(props) {
             <Image src="/close.png" height={20} width={20} alt="Close" />
           </div>
         </div>
+
+        {/* Check Loading or show Wallet Menu */}
         {connectionStatus === "connecting" ? (
           <div className="w-[100%] flex flex-col h-[200px] items-center justify-center mt-5">
-            <Image src="/loading.gif" height={100} width={100} alt="Loading" />
+            <Image src={loading} height={100} width={100} alt="Loading" />
           </div>
         ) : (
           <div className="w-[100%] flex flex-col h-[200px] mt-5">
